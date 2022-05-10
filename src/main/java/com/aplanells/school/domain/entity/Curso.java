@@ -17,7 +17,7 @@ public class Curso {
     @Column(name = "RESUMEN", nullable = false, length = 2000)
     private String resumen;
 
-    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     Set<Leccion> lecciones;
 
     public Long getId() {

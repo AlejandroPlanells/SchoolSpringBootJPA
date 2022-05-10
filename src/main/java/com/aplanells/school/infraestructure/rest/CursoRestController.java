@@ -40,7 +40,7 @@ public class CursoRestController {
         return new ResponseEntity<>(cursoDto, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(value = "/cursos/{cursosId}")
+    @DeleteMapping(value = "/cursos/{cursoId}")
     public ResponseEntity<Void> eliminarCursoPorId(@PathVariable Long cursoId) {
         cursoService.eliminarCursoPorId(cursoId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
