@@ -16,7 +16,7 @@ spring:
     allow-circular-references: true
   h2:
     console:
-      active: true
+      enabled: true
       path: /console
 
 server:
