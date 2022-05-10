@@ -10,6 +10,8 @@ public class LeccionDto implements Serializable {
     private Integer orden;
     private Long cursoId;
     private String cursoNombre;
+    private Long profesorId;
+    private String profesorNombre;
 
     public LeccionDto() {
     }
@@ -60,6 +62,22 @@ public class LeccionDto implements Serializable {
 
     public void setCursoNombre(String cursoNombre) {
         this.cursoNombre = cursoNombre;
+    }
+
+    public Long getProfesorId() {
+        return profesorId;
+    }
+
+    public void setProfesorId(Long profesorId) {
+        this.profesorId = profesorId;
+    }
+
+    public String getProfesorNombre() {
+        return profesorNombre;
+    }
+
+    public void setProfesorNombre(String profesorNombre) {
+        this.profesorNombre = profesorNombre;
     }
 
     @Override

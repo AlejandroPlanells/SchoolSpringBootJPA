@@ -21,6 +21,10 @@ public class Leccion {
     @JoinColumn(name = "curso_id", nullable = false)
     private Curso curso;
 
+    @ManyToOne
+    @JoinColumn(name = "profesor_id", nullable = false)
+    private Profesor profesor;
+
     @Column(name = "orden", nullable = false)
     private Integer orden;
 
@@ -62,5 +66,13 @@ public class Leccion {
 
     public void setCurso(Curso curso) {
         this.curso = curso;
+    }
+
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 }
