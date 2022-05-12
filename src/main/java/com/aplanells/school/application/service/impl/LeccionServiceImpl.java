@@ -1,5 +1,6 @@
 package com.aplanells.school.application.service.impl;
 
+import com.aplanells.school.application.dto.AdjuntoDto;
 import com.aplanells.school.application.dto.LeccionDto;
 import com.aplanells.school.application.mapper.LeccionMapper;
 import com.aplanells.school.application.service.LeccionService;
@@ -45,5 +46,16 @@ public class LeccionServiceImpl implements LeccionService {
                 .findOneByIdAndCurso_Id(leccionId, cursoId)
                 .map(leccion -> leccionMapper.toDto(leccion));
 
+    }
+
+    @Override
+    @Transactional
+    public List<AdjuntoDto> adjuntarFichero(Long cursoId, Long leccionId, AdjuntoDto adjuntoDto) {
+        LeccionDto leccionDto = obtenerLeccionDeUnCurso(cursoId, leccionId)
+                .orElseThrow(() -> new RuntimeException("Lección no encontrada"));
+        leccionDto.getAdjuntos().add(adjuntoDto);
+        Leccion leccion = leccionRepository.save(leccionMapper.toEntity(leccionDto));
+        leccionDto = leccionMapper.toDto(leccion);
+        return leccionDto.getAdjuntos();
     }
 }

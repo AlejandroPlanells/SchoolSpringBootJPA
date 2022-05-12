@@ -1,5 +1,6 @@
 package com.aplanells.school.infraestructure.rest;
 
+import com.aplanells.school.application.dto.AdjuntoDto;
 import com.aplanells.school.application.dto.LeccionDto;
 import com.aplanells.school.application.service.LeccionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class LeccionRestController {
     public ResponseEntity<LeccionDto> crearLeccionEnCurso(@PathVariable Long cursoId, @RequestBody LeccionDto leccionDto) {
         leccionDto = leccionService.crearLeccion(cursoId, leccionDto);
         return new ResponseEntity<>(leccionDto, HttpStatus.CREATED);
+    }
+
+    @PutMapping(value = "/lecciones/{leccionId}/adjuntos", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<List<AdjuntoDto>> anadirAdjuntoEnLeccion(@PathVariable Long cursoId, @PathVariable Long leccionId, @RequestBody AdjuntoDto adjuntoDto) {
+        List<AdjuntoDto> adjuntoDtos = leccionService.adjuntarFichero(cursoId, leccionId, adjuntoDto);
+        return new ResponseEntity<>(adjuntoDtos, HttpStatus.OK);
     }
 
 

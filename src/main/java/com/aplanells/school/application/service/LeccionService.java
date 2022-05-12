@@ -1,5 +1,6 @@
 package com.aplanells.school.application.service;
 
+import com.aplanells.school.application.dto.AdjuntoDto;
 import com.aplanells.school.application.dto.LeccionDto;
 
 import java.util.List;
@@ -9,4 +10,6 @@ public interface LeccionService {
     List<LeccionDto> obtenerLeccionesDeUnCurso(Long cursoId);
     LeccionDto crearLeccion(Long cursoId, LeccionDto leccionDto);
     Optional<LeccionDto> obtenerLeccionDeUnCurso(Long cursoId, Long leccionId);
+
+    List<AdjuntoDto> adjuntarFichero(Long cursoId, Long leccionId, AdjuntoDto adjuntoDto);
 }

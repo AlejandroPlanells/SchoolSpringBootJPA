@@ -1,6 +1,7 @@
 package com.aplanells.school.application.dto;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class LeccionDto implements Serializable {
@@ -12,6 +13,7 @@ public class LeccionDto implements Serializable {
     private String cursoNombre;
     private Long profesorId;
     private String profesorNombre;
+    List<AdjuntoDto> adjuntos;
 
     public LeccionDto() {
     }
@@ -78,6 +80,14 @@ public class LeccionDto implements Serializable {
 
     public void setProfesorNombre(String profesorNombre) {
         this.profesorNombre = profesorNombre;
+    }
+
+    public List<AdjuntoDto> getAdjuntos() {
+        return adjuntos;
+    }
+
+    public void setAdjuntos(List<AdjuntoDto> adjuntos) {
+        this.adjuntos = adjuntos;
     }
 
     @Override
