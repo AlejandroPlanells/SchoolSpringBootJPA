@@ -10,7 +10,7 @@ public class AlumnoDto implements Serializable {
     private String url;
     private List<CursoSimpleDto> cursos;
     private List<CalificacionDto> calificaciones;
-
+    private DatosFacturacionDto datosFacturacion;
 
     public AlumnoDto() {
     }
@@ -53,6 +53,14 @@ public class AlumnoDto implements Serializable {
 
     public void setCalificaciones(List<CalificacionDto> calificaciones) {
         this.calificaciones = calificaciones;
+    }
+
+    public DatosFacturacionDto getDatosFacturacion() {
+        return datosFacturacion;
+    }
+
+    public void setDatosFacturacion(DatosFacturacionDto datosFacturacion) {
+        this.datosFacturacion = datosFacturacion;
     }
 
     @Override

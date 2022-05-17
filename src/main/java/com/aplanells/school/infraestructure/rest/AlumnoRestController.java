@@ -2,6 +2,7 @@ package com.aplanells.school.infraestructure.rest;
 
 import com.aplanells.school.application.dto.AlumnoDto;
 import com.aplanells.school.application.dto.CursoSimpleDto;
+import com.aplanells.school.application.dto.DatosFacturacionDto;
 import com.aplanells.school.application.service.AlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,6 +59,21 @@ public class AlumnoRestController {
         alumnoService.eliminarCursoDeAlumno(alumnoId, cursoId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping(value = "/alumnos/{alumnoId}/datos-facturacion", produces = "application/json")
+    public ResponseEntity<DatosFacturacionDto> obtenerDatosFacturacion(@PathVariable Long alumnoId) {
+        return alumnoService
+                .obtenerDatosFacturacionPorId(alumnoId)
+                .map(datosFacturacionDto -> new ResponseEntity(datosFacturacionDto, HttpStatus.OK))
+                .orElse(new ResponseEntity(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping(value = "/alumnos/{alumnoId}/datos-facturacion", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<DatosFacturacionDto> modificarDatosFacturacion(@PathVariable Long alumnoId, @RequestBody DatosFacturacionDto datosFacturacionDto) {
+        datosFacturacionDto = alumnoService.actualizarDatosFacturacion(alumnoId, datosFacturacionDto);
+        return new ResponseEntity<>(datosFacturacionDto, HttpStatus.OK);
+    }
+
 
 
 }

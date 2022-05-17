@@ -29,6 +29,10 @@ public class Alumno {
     @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
     private Set<Calificacion> calificaciones;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "datos_facturacion_id", referencedColumnName = "id")
+    private DatosFacturacion datosFacturacion;
+
     public Long getId() {
         return id;
     }
@@ -67,6 +71,14 @@ public class Alumno {
 
     public void setCalificaciones(Set<Calificacion> calificaciones) {
         this.calificaciones = calificaciones;
+    }
+
+    public DatosFacturacion getDatosFacturacion() {
+        return datosFacturacion;
+    }
+
+    public void setDatosFacturacion(DatosFacturacion datosFacturacion) {
+        this.datosFacturacion = datosFacturacion;
     }
 
     public void eliminarCursoPorId(Long cursoId) {

@@ -6,7 +6,7 @@ import com.aplanells.school.domain.entity.Alumno;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = { CursoMapper.class, CalificacionMapper.class })
+@Mapper(componentModel = "spring", uses = { CursoMapper.class, CalificacionMapper.class, DatosFacturacionMapper.class })
 public interface AlumnoMapper extends EntityMapper<AlumnoDto, Alumno> {
 
     @Mapping(target = "url", ignore = true)
