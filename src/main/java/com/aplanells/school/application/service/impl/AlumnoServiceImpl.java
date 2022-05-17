@@ -1,6 +1,7 @@
 package com.aplanells.school.application.service.impl;
 
 import com.aplanells.school.application.dto.AlumnoDto;
+import com.aplanells.school.application.dto.CalificacionDto;
 import com.aplanells.school.application.dto.CursoSimpleDto;
 import com.aplanells.school.application.mapper.AlumnoMapper;
 import com.aplanells.school.application.service.AlumnoService;
@@ -71,5 +72,16 @@ public class AlumnoServiceImpl implements AlumnoService {
                 .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
         alumno.eliminarCursoPorId(cursoId);
         alumnoRepository.save(alumno);
+    }
+
+    @Override
+    @Transactional
+    public AlumnoDto anadirCalificacion(Long alumnoId, CalificacionDto calificacionDto) {
+        AlumnoDto alumnoDto = obtenerAlumnoPorId(alumnoId)
+                .orElseThrow(() -> new RuntimeException("Alumno no encontrado"));
+        alumnoDto.getCalificaciones().add(calificacionDto);
+        Alumno alumno = alumnoMapper.toEntity(alumnoDto);
+        alumno = alumnoRepository.save(alumno);
+        return alumnoMapper.toDto(alumno);
     }
 }

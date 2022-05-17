@@ -1,6 +1,7 @@
 package com.aplanells.school.application.service;
 
 import com.aplanells.school.application.dto.AlumnoDto;
+import com.aplanells.school.application.dto.CalificacionDto;
 import com.aplanells.school.application.dto.CursoSimpleDto;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface AlumnoService {
     List<CursoSimpleDto> registrarAlumnoEnCurso(Long alumnoId, CursoSimpleDto cursoSimpleDto);
 
     void eliminarCursoDeAlumno(Long alumnoId, Long cursoId);
+
+    AlumnoDto anadirCalificacion(Long alumnoId, CalificacionDto calificacionDto);
 }

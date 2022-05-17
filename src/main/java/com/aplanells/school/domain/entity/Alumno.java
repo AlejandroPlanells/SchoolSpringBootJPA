@@ -26,6 +26,9 @@ public class Alumno {
     )
     private Set<Curso> cursos;
 
+    @OneToMany(mappedBy = "alumno", cascade = CascadeType.ALL)
+    private Set<Calificacion> calificaciones;
+
     public Long getId() {
         return id;
     }
@@ -56,6 +59,14 @@ public class Alumno {
 
     public void setCursos(Set<Curso> cursos) {
         this.cursos = cursos;
+    }
+
+    public Set<Calificacion> getCalificaciones() {
+        return calificaciones;
+    }
+
+    public void setCalificaciones(Set<Calificacion> calificaciones) {
+        this.calificaciones = calificaciones;
     }
 
     public void eliminarCursoPorId(Long cursoId) {
