@@ -11,6 +11,7 @@ public class AlumnoDto implements Serializable {
     private List<CursoSimpleDto> cursos;
     private List<CalificacionDto> calificaciones;
     private DatosFacturacionDto datosFacturacion;
+    private UsuarioDto usuario;
 
     public AlumnoDto() {
     }
@@ -61,6 +62,14 @@ public class AlumnoDto implements Serializable {
 
     public void setDatosFacturacion(DatosFacturacionDto datosFacturacion) {
         this.datosFacturacion = datosFacturacion;
+    }
+
+    public UsuarioDto getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(UsuarioDto usuario) {
+        this.usuario = usuario;
     }
 
     @Override

@@ -6,8 +6,7 @@ import javax.persistence.*;
 @Table(name = "profesores")
 public class Profesor {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "school_sequence")
-    @SequenceGenerator(name = "school_sequence")
+    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "NOMBRE", nullable = false, length = 255)
@@ -15,6 +14,11 @@ public class Profesor {
 
     @Column(name = "NUMERO_TELEFONO", nullable = true, length = 15)
     private String numeroTelefono;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    private Usuario usuario;
 
     public Long getId() {
         return id;
@@ -38,5 +42,13 @@ public class Profesor {
 
     public void setNumeroTelefono(String numeroTelefono) {
         this.numeroTelefono = numeroTelefono;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
